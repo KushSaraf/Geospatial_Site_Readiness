@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LocateIQ — Business Location Intelligence</title>
+<link rel="stylesheet" href="css/vars.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+<!-- ════════ HEADER (sticky) ════════ -->
+<header id="hdr">
+  <div class="logo">
+    <div class="logo-mark">🗺️</div>
+    <div>
+      <div class="logo-name">LocateIQ</div>
+      <div class="logo-sub">Business Location Intelligence Platform</div>
+    </div>
+  </div>
+
+  <div class="hbadges">
+    <span class="hb hb-g">📊 NCRB 2023</span>
+    <span class="hb hb-g">🍽️ FSSAI Data</span>
+    <span class="hb hb-g">🏬 Rent Survey</span>
+    <span class="hb hb-b">🤖 AI Scored</span>
+    <span class="hb hb-a" id="cityBadge">📍 Any Location</span>
+  </div>
+
+  <div class="htools">
+    <button class="hbtn" id="exportBtn" title="Export JSON" onclick="App.exportJSON()" style="display:none">📥</button>
+    <button class="hbtn" id="csvBtn"    title="Export CSV"  onclick="App.exportCSV()"  style="display:none">📊</button>
+    <button class="hbtn" title="Print"                      onclick="window.print()">🖨️</button>
+    <button class="hbtn" title="Reset"                      onclick="App.resetAll()" style="font-size:18px">⟳</button>
+    <div class="th-tog" id="themeToggle" title="Toggle Theme"
+         onclick="Theme.toggle();MapMod.updateStyles()">
+      <div class="th-thumb">🌙</div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════ PAGE ════════ -->
+<div id="page">
+
+  <!-- ══ TOP ROW: Sidebar + Map ══ -->
+  <div id="top-row">
+
+    <!-- ── LEFT SIDEBAR ── -->
+    <div id="sidebar">
+
+      <span class="slbl">Search Location</span>
+
+      <div class="dbanner">
+        <span style="font-size:18px">✅</span>
+        <div><strong>5 Real Datasets</strong> — NCRB Crime, FSSAI Licenses, Rent 2025, Census, 320 Malls</div>
+      </div>
+
+      <!-- Location Input -->
+      <div class="fg">
+        <label class="fgl">
+          <span class="fi">📍</span>
+          Location / City / Area / District
+          <span style="margin-left:auto;font-size:9px;color:var(--ac);font-weight:700;letter-spacing:.5px">ANY GUJARAT OR INDIA</span>
+        </label>
+        <input type="text" id="locInput"
+          placeholder="Ahmedabad, Morbi, Bhuj, Surat, Rajkot, Gandhinagar…"
+          value="Ahmedabad, Gujarat"
+          list="locSug"
+          onkeydown="if(event.key==='Enter')App.analyze()">
+        <datalist id="locSug">
+          <option value="Ahmedabad, Gujarat">   <option value="Surat, Gujarat">
+          <option value="Vadodara, Gujarat">     <option value="Rajkot, Gujarat">
+          <option value="Bhavnagar, Gujarat">    <option value="Jamnagar, Gujarat">
+          <option value="Junagadh, Gujarat">     <option value="Gandhinagar, Gujarat">
+          <option value="Anand, Gujarat">        <option value="Navsari, Gujarat">
+          <option value="Mehsana, Gujarat">      <option value="Morbi, Gujarat">
+          <option value="Bharuch, Gujarat">      <option value="Vapi, Gujarat">
+          <option value="Porbandar, Gujarat">    <option value="Amreli, Gujarat">
+          <option value="Bhuj, Gujarat">         <option value="Gandhidham, Gujarat">
+          <option value="Mundra, Gujarat">       <option value="Patan, Gujarat">
+          <option value="Surendranagar, Gujarat"><option value="Godhra, Gujarat">
+          <option value="Dahod, Gujarat">        <option value="Himmatnagar, Gujarat">
+          <option value="Palanpur, Gujarat">     <option value="Nadiad, Gujarat">
+          <option value="Ankleshwar, Gujarat">   <option value="Veraval, Gujarat">
+          <option value="Diu, Gujarat">          <option value="Somnath, Gujarat">
+          <option value="Dwarka, Gujarat">       <option value="Gondal, Gujarat">
+          <option value="Jetpur, Gujarat">       <option value="Wankaner, Gujarat">
+          <option value="Bardoli, Gujarat">      <option value="Valsad, Gujarat">
+          <option value="Kalol, Gujarat">        <option value="Botad, Gujarat">
+          <option value="Modasa, Gujarat">       <option value="Unjha, Gujarat">
+          <option value="Mumbai, Maharashtra">   <option value="Delhi">
+          <option value="Bangalore, Karnataka">  <option value="Pune, Maharashtra">
+          <option value="Hyderabad, Telangana">  <option value="Chennai, Tamil Nadu">
+        </datalist>
+      </div>
+
+      <!-- Business Type -->
+      <div class="fg">
+        <label class="fgl"><span class="fi">🏢</span> Business Type</label>
+        <div class="sw">
+          <select id="bizType">
+            <option value="cafe">☕  Café / Coffee Shop</option>
+            <option value="restaurant">🍽️  Restaurant / Dhaba</option>
+            <option value="retail">🛍️  Retail Store</option>
+            <option value="pharmacy">💊  Pharmacy / Medical</option>
+            <option value="gym">🏋️  Gym / Fitness Center</option>
+            <option value="salon">💇  Salon / Spa / Beauty</option>
+            <option value="grocery">🛒  Grocery / Supermarket</option>
+            <option value="tech">💻  Electronics / Tech Store</option>
+            <option value="bakery">🥐  Bakery / Sweet Shop</option>
+            <option value="hotel">🏨  Hotel / Hospitality</option>
+            <option value="coworking">🖥️  Co-working Space</option>
+            <option value="clinic">🏥  Clinic / Healthcare</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="fg">
+          <label class="fgl"><span class="fi">📏</span> Radius</label>
+          <div class="sw">
+            <select id="radius">
+              <option value="1000">1 km</option>
+              <option value="2000" selected>2 km</option>
+              <option value="3000">3 km</option>
+              <option value="5000">5 km</option>
+              <option value="10000">10 km</option>
+              <option value="20000">20 km</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label class="fgl"><span class="fi">💰</span> Budget</label>
+          <div class="sw">
+            <select id="budget">
+              <option value="low">₹ Below 5L</option>
+              <option value="medium" selected>₹₹ 5–25L</option>
+              <option value="high">₹₹₹ 25L+</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label class="fgl"><span class="fi">👥</span> Target Audience</label>
+        <div class="sw">
+          <select id="audience">
+            <option value="young">Young Adults (18–30)</option>
+            <option value="family" selected>Families</option>
+            <option value="professional">Working Professionals</option>
+            <option value="premium">Premium / HNI</option>
+            <option value="all">All Demographics</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn btn-ac" id="analyzeBtn" onclick="App.analyze()">
+        🔍 &nbsp;Analyze Locations
+      </button>
+
+      <!-- Loader -->
+      <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <div class="lb"><div class="lf" id="lFill" style="width:0%"></div></div>
+        <div class="lt" id="lText">Initializing…</div>
+      </div>
+
+      <div class="divider" id="div1" style="display:none"></div>
+
+      <!-- Export Bar -->
+      <div class="exp-bar" id="expBar">
+        <button class="exp-btn exp-j" onclick="App.exportJSON()">📥 JSON</button>
+        <button class="exp-btn exp-c" onclick="App.exportCSV()">📊 CSV</button>
+        <button class="exp-btn exp-p" onclick="window.print()">🖨️ Print</button>
+      </div>
+
+      <!-- Score Hero -->
+      <div class="score-hero" id="scoreHero">
+        <div class="sh-top">
+          <div>
+            <div class="sh-tag">TOP LOCATION SCORE</div>
+            <div class="sh-num" id="scoreNum">--</div>
+            <div class="sh-grade" id="gradeLabel">--</div>
+          </div>
+          <div class="ring-wrap">
+            <svg width="70" height="70" viewBox="0 0 70 70">
+              <circle cx="35" cy="35" r="28" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="7"/>
+              <circle id="ringC" cx="35" cy="35" r="28" fill="none" stroke="url(#rg)"
+                stroke-width="7" stroke-dasharray="175.9" stroke-dashoffset="175.9"
+                stroke-linecap="round" style="transition:stroke-dashoffset 1.5s ease"/>
+              <defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#00c896"/><stop offset="100%" stop-color="#0099ff"/>
+              </linearGradient></defs>
+            </svg>
+            <div class="ring-lbl" id="ringL">--</div>
+          </div>
+        </div>
+        <div class="mg">
+          <div class="mg-item">
+            <div class="mg-val" id="mFoot" style="color:var(--ac)">--</div>
+            <div class="mg-lbl">Footfall Score</div>
+          </div>
+          <div class="mg-item">
+            <div class="mg-val" id="mComp" style="color:var(--blue)">--</div>
+            <div class="mg-lbl">Competitors</div>
+          </div>
+          <div class="mg-item">
+            <div class="mg-val" id="mROI" style="color:var(--green)">--</div>
+            <div class="mg-lbl">ROI Year 1</div>
+          </div>
+          <div class="mg-item">
+            <div class="mg-val" id="mRisk" style="color:var(--yellow)">--</div>
+            <div class="mg-lbl">Risk Level</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Rec -->
+      <div class="ai-rec" id="aiRec">
+        <div class="ai-tag">🤖 AI RECOMMENDATION · REAL-DATA POWERED</div>
+        <div id="aiRecText"></div>
+      </div>
+
+      <!-- Results List -->
+      <div class="rl" id="resList">
+        <span class="slbl" style="margin-bottom:12px">📊 Ranked Locations</span>
+        <div id="listItems"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Scenario Simulator -->
+      <span class="slbl">⚡ Scenario Simulator</span>
+      <div class="grid2">
+        <div class="fg">
+          <label class="fgl"><span class="fi">🏠</span> Rent Change (%)</label>
+          <input type="number" id="rentChg" placeholder="+20 or -10" value="0">
+        </div>
+        <div class="fg">
+          <label class="fgl"><span class="fi">🚶</span> Traffic Change (%)</label>
+          <input type="number" id="trafChg" placeholder="+15" value="0">
+        </div>
+      </div>
+      <div class="fg">
+        <label class="fgl"><span class="fi">🏪</span> New Competitors (+/-)</label>
+        <input type="number" id="compChg" placeholder="+3 or -2" value="0">
+      </div>
+      <button class="btn btn-ghost" onclick="App.runScenario()">⚡ &nbsp;Run Scenario</button>
+      <div class="sc-res" id="scRes">
+        <div class="sc-t">📊 SCENARIO RESULT</div>
+        <div id="scContent"></div>
+      </div>
+
+    </div><!-- end sidebar -->
+
+    <!-- ── MAP COLUMN ── -->
+    <div id="map-col">
+
+      <!-- Google Map -->
+      <div id="map"></div>
+
+      <!-- Map Controls (top-left) -->
+      <div class="map-ctrl">
+        <div class="map-pill-bar">
+          <button class="mpb on" id="mt-roadmap"   onclick="MapMod.setType('roadmap')">🗺 Map</button>
+          <button class="mpb"    id="mt-satellite" onclick="MapMod.setType('satellite')">🛰 Satellite</button>
+          <button class="mpb"    id="mt-hybrid"    onclick="MapMod.setType('hybrid')">🛰 Hybrid</button>
+          <button class="mpb"    id="mt-terrain"   onclick="MapMod.setType('terrain')">⛰ Terrain</button>
+        </div>
+        <div class="map-search">
+          <span style="font-size:15px;flex-shrink:0;color:var(--muted)">🔍</span>
+          <input type="text" id="mapSearchInput" placeholder="Search on map…"
+            onkeydown="if(event.key==='Enter')MapMod.searchMap()">
+          <button class="ibtn on" onclick="MapMod.searchMap()" style="height:28px;padding:0 12px;font-size:10px">Go</button>
+        </div>
+        <div class="map-pill-bar">
+          <button class="mpb on" id="heatBtn" onclick="App.toggleHeat()">🔥 Heatmap</button>
+          <button class="mpb"    onclick="document.getElementById('svPanel').classList.toggle('open')">🚶 Street View</button>
+        </div>
+      </div>
+
+      <!-- Map type indicator (top-right) -->
+      <div class="map-tr" id="mapTypeInd">🗺️ Road View</div>
+
+      <!-- Map legend -->
+      <div class="map-legend" id="mapLegend">
+        <div class="leg-t">MAP LEGEND</div>
+        <div class="leg-r"><div class="leg-d" style="background:#10b981"></div>📍 Location Pin (scored area)</div>
+        <div class="leg-r"><div class="leg-d" style="background:#f97316;clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%)"></div>🔶 Competitor (orange ◆)</div>
+        <div class="leg-r"><div class="leg-d" style="background:#10b981"></div>Excellent: 80–100</div>
+        <div class="leg-r"><div class="leg-d" style="background:#f59e0b"></div>Good: 60–79</div>
+        <div class="leg-r"><div class="leg-d" style="background:#ef4444"></div>Fair: below 60</div>
+      </div>
+
+      <!-- Map bottom stats overlay -->
+      <div id="mapBStats" style="position:absolute;bottom:0;left:0;right:0;z-index:10;background:var(--overlay);border-top:1px solid var(--border2);padding:8px 18px;display:none;gap:14px;align-items:center;backdrop-filter:blur(14px);font-size:11px;color:var(--muted);box-shadow:var(--shadow-up)"></div>
+
+      <!-- Street View panel -->
+      <div class="sv-panel" id="svPanel">
+        <div id="streetview"></div>
+        <div class="sv-close" onclick="MapMod.closeSV()">✕</div>
+      </div>
+
+    </div><!-- end map-col -->
+
+  </div><!-- end top-row -->
+
+  <!-- ════════ BELOW MAP ZONE ════════ -->
+  <div id="below-map">
+
+    <!-- COMPETITOR STRIP -->
+    <div id="compStrip">
+      <div class="cs-header">
+        <div class="cs-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+          <span id="csTitle">🏪 NEARBY COMPETITORS</span>
+          <span class="pill p-o" style="font-size:9px;padding:2px 8px">🔶 Orange ◆ pins = competitors on map</span>
+        </div>
+        <div class="cs-actions">
+          <button class="ibtn" onclick="UI.hideCompStrip()">Hide ✕</button>
+        </div>
+      </div>
+      <div class="cs-scroll" id="compScroll"></div>
+    </div>
+
+    <!-- DETAIL SECTION (rendered dynamically) -->
+    <div id="results-section">
+
+      <!-- Empty state (shown before analysis) -->
+      <div class="empty" id="belowEmpty" style="padding:80px 40px">
+        <div class="empty-ico">🏙️</div>
+        <div class="empty-t">Ready to Analyze Any Location</div>
+        <div class="empty-s">
+          Enter any Gujarat city, area, taluka or district in the sidebar.<br>
+          Supports all 50+ Gujarat locations plus major Indian cities.<br>
+          Results + full intelligence appear here after analysis.
+        </div>
+      </div>
+
+      <!-- Dynamic detail injected here -->
+      <div id="detailSection" style="display:none"></div>
+
+    </div>
+
+  </div><!-- end below-map -->
+
+</div><!-- end page -->
+
+<!-- ════════ STATUS BAR (sticky bottom) ════════ -->
+<div id="sbar">
+  <div class="sdot" id="sDot"></div>
+  <span id="sText">Loading real datasets…</span>
+  <span style="margin-left:auto;font-size:10.5px;color:var(--text2)" id="sRight"></span>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- SCRIPTS -->
+<script src="js/config.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/scoring.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/map.js"></script>
+<script src="js/app.js"></script>
+<script>
+window.App=App; window.MapMod=MapMod; window.Theme=Theme; window.UI=UI;
+</script>
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDE9XKikkX34uhZYJJWvZg1I3vL9yoNRVQ&libraries=places,visualization&callback=initMap">
+</script>
+
+</body>
+</html>

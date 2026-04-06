@@ -1,0 +1,190 @@
+{
+  "version": "2.0",
+  "sources": ["NCRB Crime Data 2023", "FSSAI FoSCoS Data", "City Rent Survey 2025", "India Census Population Data", "India Shopping Malls Database"],
+  "lastUpdated": "2025",
+  "cities": {
+    "ahmedabad": {
+      "name": "Ahmedabad", "state": "Gujarat",
+      "center": { "lat": 23.0225, "lng": 72.5714 },
+      "rentData": { "min": 80, "max": 150, "avg": 115, "trend": "Emerging growth" },
+      "safetyIndex": 51, "crimeRate": 806.3,
+      "mallCount": 3, "fssaiTotal": 196625,
+      "urbanDensity": 11948,
+      "areas": [
+        { "name": "SG Highway",     "lat": 23.0469, "lng": 72.5060, "tier": "premium", "rentMult": 1.05, "footfallIdx": 90, "incomeIdx": 85 },
+        { "name": "Navrangpura",    "lat": 23.0366, "lng": 72.5616, "tier": "premium", "rentMult": 0.98, "footfallIdx": 85, "incomeIdx": 80 },
+        { "name": "CG Road",        "lat": 23.0301, "lng": 72.5612, "tier": "premium", "rentMult": 1.15, "footfallIdx": 88, "incomeIdx": 82 },
+        { "name": "Vastrapur",      "lat": 23.0440, "lng": 72.5270, "tier": "premium", "rentMult": 0.92, "footfallIdx": 82, "incomeIdx": 78 },
+        { "name": "Satellite",      "lat": 23.0205, "lng": 72.5080, "tier": "premium", "rentMult": 1.00, "footfallIdx": 84, "incomeIdx": 80 },
+        { "name": "Prahlad Nagar",  "lat": 23.0170, "lng": 72.5020, "tier": "premium", "rentMult": 0.95, "footfallIdx": 80, "incomeIdx": 79 },
+        { "name": "Maninagar",      "lat": 22.9973, "lng": 72.6048, "tier": "mid",     "rentMult": 0.61, "footfallIdx": 78, "incomeIdx": 60 },
+        { "name": "Bodakdev",       "lat": 23.0510, "lng": 72.5100, "tier": "premium", "rentMult": 0.98, "footfallIdx": 83, "incomeIdx": 81 },
+        { "name": "Gota",           "lat": 23.1027, "lng": 72.5740, "tier": "mid",     "rentMult": 0.57, "footfallIdx": 70, "incomeIdx": 62 },
+        { "name": "Thaltej",        "lat": 23.0680, "lng": 72.5020, "tier": "premium", "rentMult": 0.87, "footfallIdx": 79, "incomeIdx": 76 },
+        { "name": "Paldi",          "lat": 23.0100, "lng": 72.5760, "tier": "mid",     "rentMult": 0.65, "footfallIdx": 74, "incomeIdx": 65 },
+        { "name": "Bopal",          "lat": 23.0000, "lng": 72.4660, "tier": "mid",     "rentMult": 0.52, "footfallIdx": 68, "incomeIdx": 63 },
+        { "name": "Chandkheda",     "lat": 23.1200, "lng": 72.5930, "tier": "budget",  "rentMult": 0.39, "footfallIdx": 62, "incomeIdx": 52 },
+        { "name": "Naroda",         "lat": 23.0820, "lng": 72.6540, "tier": "budget",  "rentMult": 0.35, "footfallIdx": 65, "incomeIdx": 48 }
+      ]
+    },
+    "mumbai": {
+      "name": "Mumbai", "state": "Maharashtra",
+      "center": { "lat": 19.0760, "lng": 72.8777 },
+      "rentData": { "min": 120, "max": 180, "avg": 150, "trend": "Stable growth" },
+      "safetyIndex": 71, "crimeRate": 470.4,
+      "mallCount": 19, "fssaiTotal": 979599,
+      "urbanDensity": 27000,
+      "areas": [
+        { "name": "Bandra West",   "lat": 19.0596, "lng": 72.8295, "tier": "premium", "rentMult": 2.33, "footfallIdx": 95, "incomeIdx": 92 },
+        { "name": "Andheri West",  "lat": 19.1197, "lng": 72.8468, "tier": "premium", "rentMult": 1.87, "footfallIdx": 90, "incomeIdx": 85 },
+        { "name": "Lower Parel",   "lat": 18.9929, "lng": 72.8320, "tier": "premium", "rentMult": 2.13, "footfallIdx": 92, "incomeIdx": 90 },
+        { "name": "Powai",         "lat": 19.1176, "lng": 72.9060, "tier": "premium", "rentMult": 1.73, "footfallIdx": 85, "incomeIdx": 88 },
+        { "name": "Juhu",          "lat": 19.1075, "lng": 72.8263, "tier": "premium", "rentMult": 2.00, "footfallIdx": 88, "incomeIdx": 89 },
+        { "name": "Malad West",    "lat": 19.1872, "lng": 72.8484, "tier": "mid",     "rentMult": 1.20, "footfallIdx": 80, "incomeIdx": 72 },
+        { "name": "Goregaon East", "lat": 19.1663, "lng": 72.8526, "tier": "mid",     "rentMult": 1.13, "footfallIdx": 78, "incomeIdx": 70 },
+        { "name": "Dadar",         "lat": 19.0186, "lng": 72.8433, "tier": "mid",     "rentMult": 1.33, "footfallIdx": 88, "incomeIdx": 68 },
+        { "name": "Thane West",    "lat": 19.2183, "lng": 72.9781, "tier": "mid",     "rentMult": 0.87, "footfallIdx": 76, "incomeIdx": 68 },
+        { "name": "Navi Mumbai",   "lat": 19.0330, "lng": 73.0297, "tier": "mid",     "rentMult": 0.80, "footfallIdx": 72, "incomeIdx": 65 },
+        { "name": "Kurla",         "lat": 19.0726, "lng": 72.8797, "tier": "budget",  "rentMult": 0.60, "footfallIdx": 82, "incomeIdx": 55 }
+      ]
+    },
+    "delhi": {
+      "name": "Delhi", "state": "Delhi",
+      "center": { "lat": 28.7041, "lng": 77.1025 },
+      "rentData": { "min": 100, "max": 160, "avg": 130, "trend": "High growth" },
+      "safetyIndex": 2, "crimeRate": 1602,
+      "mallCount": 32, "fssaiTotal": 96865,
+      "urbanDensity": 11297,
+      "areas": [
+        { "name": "Connaught Place","lat": 28.6328, "lng": 77.2197, "tier": "premium", "rentMult": 3.08, "footfallIdx": 98, "incomeIdx": 88 },
+        { "name": "Khan Market",   "lat": 28.5990, "lng": 77.2268, "tier": "premium", "rentMult": 3.85, "footfallIdx": 90, "incomeIdx": 95 },
+        { "name": "Saket",         "lat": 28.5245, "lng": 77.2066, "tier": "premium", "rentMult": 1.92, "footfallIdx": 88, "incomeIdx": 85 },
+        { "name": "Vasant Kunj",   "lat": 28.5206, "lng": 77.1573, "tier": "premium", "rentMult": 1.69, "footfallIdx": 82, "incomeIdx": 87 },
+        { "name": "Lajpat Nagar",  "lat": 28.5677, "lng": 77.2431, "tier": "mid",     "rentMult": 1.23, "footfallIdx": 85, "incomeIdx": 68 },
+        { "name": "Karol Bagh",    "lat": 28.6514, "lng": 77.1907, "tier": "mid",     "rentMult": 1.15, "footfallIdx": 88, "incomeIdx": 62 },
+        { "name": "Rajouri Garden","lat": 28.6476, "lng": 77.1219, "tier": "mid",     "rentMult": 1.08, "footfallIdx": 84, "incomeIdx": 65 },
+        { "name": "Dwarka",        "lat": 28.5921, "lng": 77.0460, "tier": "mid",     "rentMult": 0.85, "footfallIdx": 75, "incomeIdx": 63 },
+        { "name": "Rohini",        "lat": 28.7489, "lng": 77.0632, "tier": "budget",  "rentMult": 0.62, "footfallIdx": 72, "incomeIdx": 55 }
+      ]
+    },
+    "bangalore": {
+      "name": "Bangalore", "state": "Karnataka",
+      "center": { "lat": 12.9716, "lng": 77.5946 },
+      "rentData": { "min": 90, "max": 140, "avg": 115, "trend": "Strong demand" },
+      "safetyIndex": 81, "crimeRate": 315.8,
+      "mallCount": 12, "fssaiTotal": 0,
+      "urbanDensity": 13000,
+      "areas": [
+        { "name": "Koramangala",   "lat": 12.9279, "lng": 77.6271, "tier": "premium", "rentMult": 1.74, "footfallIdx": 92, "incomeIdx": 90 },
+        { "name": "Indiranagar",   "lat": 12.9784, "lng": 77.6408, "tier": "premium", "rentMult": 1.65, "footfallIdx": 90, "incomeIdx": 88 },
+        { "name": "HSR Layout",    "lat": 12.9116, "lng": 77.6389, "tier": "premium", "rentMult": 1.48, "footfallIdx": 85, "incomeIdx": 85 },
+        { "name": "Whitefield",    "lat": 12.9698, "lng": 77.7500, "tier": "premium", "rentMult": 1.39, "footfallIdx": 82, "incomeIdx": 87 },
+        { "name": "MG Road",       "lat": 12.9752, "lng": 77.6146, "tier": "premium", "rentMult": 2.17, "footfallIdx": 95, "incomeIdx": 85 },
+        { "name": "Jayanagar",     "lat": 12.9250, "lng": 77.5938, "tier": "mid",     "rentMult": 1.13, "footfallIdx": 80, "incomeIdx": 72 },
+        { "name": "Marathahalli",  "lat": 12.9591, "lng": 77.6972, "tier": "mid",     "rentMult": 1.04, "footfallIdx": 78, "incomeIdx": 70 },
+        { "name": "Electronic City","lat":12.8399, "lng": 77.6770, "tier": "mid",     "rentMult": 0.87, "footfallIdx": 72, "incomeIdx": 75 },
+        { "name": "Yeshwanthpur",  "lat": 13.0261, "lng": 77.5503, "tier": "budget",  "rentMult": 0.65, "footfallIdx": 70, "incomeIdx": 58 }
+      ]
+    },
+    "pune": {
+      "name": "Pune", "state": "Maharashtra",
+      "center": { "lat": 18.5204, "lng": 73.8567 },
+      "rentData": { "min": 70, "max": 100, "avg": 85, "trend": "Moderate growth" },
+      "safetyIndex": 71, "crimeRate": 470.4,
+      "mallCount": 2, "fssaiTotal": 979599,
+      "urbanDensity": 8500,
+      "areas": [
+        { "name": "Koregaon Park", "lat": 18.5362, "lng": 73.8929, "tier": "premium", "rentMult": 2.12, "footfallIdx": 90, "incomeIdx": 88 },
+        { "name": "Baner",         "lat": 18.5590, "lng": 73.7868, "tier": "premium", "rentMult": 1.76, "footfallIdx": 85, "incomeIdx": 83 },
+        { "name": "Aundh",         "lat": 18.5590, "lng": 73.8070, "tier": "premium", "rentMult": 1.65, "footfallIdx": 84, "incomeIdx": 82 },
+        { "name": "Viman Nagar",   "lat": 18.5679, "lng": 73.9143, "tier": "premium", "rentMult": 1.88, "footfallIdx": 82, "incomeIdx": 80 },
+        { "name": "FC Road",       "lat": 18.5238, "lng": 73.8395, "tier": "premium", "rentMult": 2.00, "footfallIdx": 88, "incomeIdx": 78 },
+        { "name": "Kothrud",       "lat": 18.5074, "lng": 73.8077, "tier": "mid",     "rentMult": 1.18, "footfallIdx": 78, "incomeIdx": 70 },
+        { "name": "Hadapsar",      "lat": 18.5018, "lng": 73.9260, "tier": "mid",     "rentMult": 1.06, "footfallIdx": 72, "incomeIdx": 65 },
+        { "name": "Wakad",         "lat": 18.5989, "lng": 73.7600, "tier": "mid",     "rentMult": 1.12, "footfallIdx": 75, "incomeIdx": 68 }
+      ]
+    },
+    "surat": {
+      "name": "Surat", "state": "Gujarat",
+      "center": { "lat": 21.1702, "lng": 72.8311 },
+      "rentData": { "min": 80, "max": 150, "avg": 115, "trend": "Emerging growth" },
+      "safetyIndex": 51, "crimeRate": 806.3,
+      "mallCount": 2, "fssaiTotal": 196625,
+      "urbanDensity": 9500,
+      "areas": [
+        { "name": "Adajan",   "lat": 21.1939, "lng": 72.7986, "tier": "premium", "rentMult": 0.78, "footfallIdx": 85, "incomeIdx": 78 },
+        { "name": "Vesu",     "lat": 21.1401, "lng": 72.7820, "tier": "premium", "rentMult": 0.83, "footfallIdx": 82, "incomeIdx": 80 },
+        { "name": "Athwa",    "lat": 21.1889, "lng": 72.8278, "tier": "premium", "rentMult": 0.87, "footfallIdx": 88, "incomeIdx": 75 },
+        { "name": "Piplod",   "lat": 21.1551, "lng": 72.7878, "tier": "mid",     "rentMult": 0.61, "footfallIdx": 78, "incomeIdx": 70 },
+        { "name": "Varachha", "lat": 21.2082, "lng": 72.8700, "tier": "mid",     "rentMult": 0.52, "footfallIdx": 80, "incomeIdx": 60 },
+        { "name": "Udhna",    "lat": 21.1630, "lng": 72.8719, "tier": "budget",  "rentMult": 0.35, "footfallIdx": 70, "incomeIdx": 48 }
+      ]
+    },
+    "vadodara": {
+      "name": "Vadodara", "state": "Gujarat",
+      "center": { "lat": 22.3072, "lng": 73.1812 },
+      "rentData": { "min": 80, "max": 150, "avg": 115, "trend": "Emerging growth" },
+      "safetyIndex": 51, "crimeRate": 806.3,
+      "mallCount": 1, "fssaiTotal": 196625,
+      "urbanDensity": 5200,
+      "areas": [
+        { "name": "Alkapuri",    "lat": 22.3106, "lng": 73.1729, "tier": "premium", "rentMult": 0.70, "footfallIdx": 85, "incomeIdx": 78 },
+        { "name": "Sayajigunj", "lat": 22.3179, "lng": 73.1850, "tier": "premium", "rentMult": 0.78, "footfallIdx": 88, "incomeIdx": 75 },
+        { "name": "Gotri",      "lat": 22.3388, "lng": 73.1484, "tier": "premium", "rentMult": 0.65, "footfallIdx": 80, "incomeIdx": 76 },
+        { "name": "Fatehgunj",  "lat": 22.3286, "lng": 73.1914, "tier": "mid",     "rentMult": 0.52, "footfallIdx": 78, "incomeIdx": 65 },
+        { "name": "Manjalpur",  "lat": 22.2636, "lng": 73.1886, "tier": "budget",  "rentMult": 0.33, "footfallIdx": 65, "incomeIdx": 50 }
+      ]
+    },
+    "rajkot": {
+      "name": "Rajkot", "state": "Gujarat",
+      "center": { "lat": 22.3039, "lng": 70.8022 },
+      "rentData": { "min": 80, "max": 150, "avg": 115, "trend": "Emerging growth" },
+      "safetyIndex": 51, "crimeRate": 806.3,
+      "mallCount": 1, "fssaiTotal": 196625,
+      "urbanDensity": 4300,
+      "areas": [
+        { "name": "Kalawad Road",     "lat": 22.3156, "lng": 70.7700, "tier": "premium", "rentMult": 0.61, "footfallIdx": 82, "incomeIdx": 72 },
+        { "name": "Yagnik Road",      "lat": 22.2970, "lng": 70.7930, "tier": "premium", "rentMult": 0.65, "footfallIdx": 85, "incomeIdx": 70 },
+        { "name": "150 Ft Ring Road", "lat": 22.3200, "lng": 70.8200, "tier": "mid",     "rentMult": 0.52, "footfallIdx": 78, "incomeIdx": 65 },
+        { "name": "Gondal Road",      "lat": 22.2700, "lng": 70.8000, "tier": "mid",     "rentMult": 0.48, "footfallIdx": 75, "incomeIdx": 62 },
+        { "name": "Mavdi",            "lat": 22.2849, "lng": 70.7700, "tier": "budget",  "rentMult": 0.33, "footfallIdx": 65, "incomeIdx": 52 }
+      ]
+    },
+    "hyderabad": {
+      "name": "Hyderabad", "state": "Telangana",
+      "center": { "lat": 17.3850, "lng": 78.4867 },
+      "rentData": { "min": 60, "max": 100, "avg": 80, "trend": "Rising fast" },
+      "safetyIndex": 70, "crimeRate": 481.6,
+      "mallCount": 9, "fssaiTotal": 0,
+      "urbanDensity": 18100,
+      "areas": [
+        { "name": "Banjara Hills",  "lat": 17.4138, "lng": 78.4487, "tier": "premium", "rentMult": 2.25, "footfallIdx": 90, "incomeIdx": 90 },
+        { "name": "Jubilee Hills",  "lat": 17.4326, "lng": 78.4071, "tier": "premium", "rentMult": 2.38, "footfallIdx": 88, "incomeIdx": 92 },
+        { "name": "Hitech City",    "lat": 17.4435, "lng": 78.3772, "tier": "premium", "rentMult": 2.50, "footfallIdx": 92, "incomeIdx": 88 },
+        { "name": "Gachibowli",     "lat": 17.4401, "lng": 78.3489, "tier": "premium", "rentMult": 2.13, "footfallIdx": 85, "incomeIdx": 87 },
+        { "name": "Madhapur",       "lat": 17.4483, "lng": 78.3915, "tier": "premium", "rentMult": 2.06, "footfallIdx": 88, "incomeIdx": 85 },
+        { "name": "Kukatpally",     "lat": 17.4849, "lng": 78.4138, "tier": "mid",     "rentMult": 1.25, "footfallIdx": 80, "incomeIdx": 68 },
+        { "name": "Ameerpet",       "lat": 17.4375, "lng": 78.4483, "tier": "mid",     "rentMult": 1.38, "footfallIdx": 85, "incomeIdx": 65 },
+        { "name": "Secunderabad",   "lat": 17.4399, "lng": 78.4983, "tier": "mid",     "rentMult": 1.50, "footfallIdx": 82, "incomeIdx": 65 }
+      ]
+    },
+    "chennai": {
+      "name": "Chennai", "state": "Tamil Nadu",
+      "center": { "lat": 13.0827, "lng": 80.2707 },
+      "rentData": { "min": 60, "max": 90, "avg": 75, "trend": "Steady growth" },
+      "safetyIndex": 57, "crimeRate": 701.4,
+      "mallCount": 15, "fssaiTotal": 557013,
+      "urbanDensity": 26903,
+      "areas": [
+        { "name": "T. Nagar",       "lat": 13.0418, "lng": 80.2341, "tier": "premium", "rentMult": 2.67, "footfallIdx": 95, "incomeIdx": 78 },
+        { "name": "Anna Nagar",     "lat": 13.0891, "lng": 80.2099, "tier": "premium", "rentMult": 2.27, "footfallIdx": 88, "incomeIdx": 82 },
+        { "name": "Nungambakkam",   "lat": 13.0598, "lng": 80.2460, "tier": "premium", "rentMult": 2.80, "footfallIdx": 85, "incomeIdx": 85 },
+        { "name": "Adyar",          "lat": 13.0012, "lng": 80.2565, "tier": "premium", "rentMult": 2.40, "footfallIdx": 84, "incomeIdx": 83 },
+        { "name": "OMR",            "lat": 12.9010, "lng": 80.2279, "tier": "premium", "rentMult": 1.73, "footfallIdx": 78, "incomeIdx": 80 },
+        { "name": "Velachery",      "lat": 12.9816, "lng": 80.2209, "tier": "mid",     "rentMult": 1.47, "footfallIdx": 80, "incomeIdx": 70 },
+        { "name": "Tambaram",       "lat": 12.9249, "lng": 80.1000, "tier": "mid",     "rentMult": 1.07, "footfallIdx": 75, "incomeIdx": 62 },
+        { "name": "Ambattur",       "lat": 13.1143, "lng": 80.1548, "tier": "budget",  "rentMult": 0.77, "footfallIdx": 70, "incomeIdx": 55 }
+      ]
+    }
+  }
+}

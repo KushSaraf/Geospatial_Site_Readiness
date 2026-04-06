@@ -1,0 +1,70 @@
+/* LocateIQ v4 — Theme Variables */
+
+[data-theme="dark"] {
+  --bg:        #07090f;
+  --s1:        #0c1018;
+  --s2:        #111622;
+  --s3:        #18202e;
+  --s4:        #1f2a3c;
+  --border:    rgba(255,255,255,0.055);
+  --border2:   rgba(255,255,255,0.10);
+  --text:      #dde4f0;
+  --text2:     #8a97b0;
+  --muted:     #4a5568;
+  --card:      #0c1018;
+  --input:     #141c28;
+  --overlay:   rgba(7,9,15,0.93);
+  --shadow:    0 8px 32px rgba(0,0,0,0.55);
+  --shadow-s:  0 2px 12px rgba(0,0,0,0.40);
+  --shadow-up: 0 -4px 24px rgba(0,0,0,0.35);
+}
+
+[data-theme="light"] {
+  --bg:        #f0f4f9;
+  --s1:        #ffffff;
+  --s2:        #f7f9fc;
+  --s3:        #eef2f7;
+  --s4:        #e5eaf2;
+  --border:    rgba(0,0,0,0.065);
+  --border2:   rgba(0,0,0,0.12);
+  --text:      #111827;
+  --text2:     #4b5563;
+  --muted:     #9ca3af;
+  --card:      #ffffff;
+  --input:     #f1f5f9;
+  --overlay:   rgba(240,244,249,0.95);
+  --shadow:    0 8px 32px rgba(0,0,0,0.09);
+  --shadow-s:  0 2px 12px rgba(0,0,0,0.07);
+  --shadow-up: 0 -4px 24px rgba(0,0,0,0.06);
+}
+
+:root {
+  /* Accent palette */
+  --ac:        #00c896;
+  --ac2:       #0099ff;
+  --ac-dim:    rgba(0,200,150,0.12);
+  --ac-glow:   rgba(0,200,150,0.28);
+  --blue:      #3b82f6;
+  --blue-dim:  rgba(59,130,246,0.12);
+  --green:     #10b981;
+  --green-dim: rgba(16,185,129,0.12);
+  --yellow:    #f59e0b;
+  --yel-dim:   rgba(245,158,11,0.12);
+  --red:       #ef4444;
+  --red-dim:   rgba(239,68,68,0.12);
+  --orange:    #f97316;
+  --ora-dim:   rgba(249,115,22,0.12);
+  --purple:    #8b5cf6;
+  --pur-dim:   rgba(139,92,246,0.12);
+
+  /* Typography */
+  --fh: 'Syne', sans-serif;
+  --fb: 'Plus Jakarta Sans', sans-serif;
+
+  /* Radius */
+  --r4:  4px;
+  --r8:  8px;
+  --r12: 12px;
+  --r16: 16px;
+  --r20: 20px;
+}
